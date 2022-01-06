@@ -142,13 +142,17 @@ export default {
 		},
 		localeTileData() {
 			const messages = this.tileData.messages;
+			console.log('messages:',messages);
+			console.log('locale:',this.locale);
 			if (
 				typeof messages !== 'undefined' &&
         typeof messages[this.locale] === 'object'
 			) {
+				console.log('replaced by locale');
 				return { ...this.tileData,
 					...messages[this.locale] };
 			} else {
+				console.log('not replaced by locale');
 				return this.tileData;
 			}
 		},
@@ -178,6 +182,23 @@ export default {
 				if(this.newTile){
 					tileDataToEdit.newTile = true;
 				}
+				// SEB //
+				//console.log('Tile.vue - tileDataToEdit',tileDataToEdit);
+				//const messages = tileDataToEdit.messages;
+				//const currentLocale = Object.keys(this.$root.$i18n._localeChainCache)[0];
+				//console.log('Tile.vue - tileDataToEdit messages',messages);
+				//if (
+				//	typeof messages !== 'undefined' &&
+				//typeof messages[currentLocale] === 'object'
+				//) {
+				//	console.log('replaced by locale');
+				//	return { ...tileDataToEdit,
+				//		...messages[currentLocale] };
+				//} else {
+				//	console.log('not replaced by locale');
+				//	return tileDataToEdit;
+				//}
+				// SEB //
 				this.setCurrentTileBeingEdited(tileDataToEdit);
 				this.toggleEditDialogVisibility();
 			} else if (this.sentenceMode && !keyboardTile) {
