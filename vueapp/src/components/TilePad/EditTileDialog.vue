@@ -127,8 +127,9 @@ export default {
 			const messages = this.currentTileBeingEdited.messages;
 			//console.log('editTileDialog.vue - newTileObject:',this.currentTileBeingEdited);
 			//console.log('editTileDialog.vue - newTileObjectmessages:',messages);
-			const currentLocale = Object.keys(this.$root.$i18n._localeChainCache)[0];
-			//console.log('editTileDialog.vue - newTileObjectlocale:',currentLocale);
+			// const currentLocale = Object.keys(this.$root.$i18n._localeChainCache)[0];
+			const currentLocale = this.$store.state.settings.locale;
+			console.log('editTileDialog.vue - newTileObjectlocale:',currentLocale);
 			if (
 				typeof messages !== 'undefined' &&
         typeof messages[currentLocale] === 'object'
